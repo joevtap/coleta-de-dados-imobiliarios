@@ -25,8 +25,8 @@ def generate_node_list(adjacency_matrix, start_node=1, write_file=False):
     for i in range(len(adjacency_matrix)):
         node_list.append({
             'id': i + start_node,
-            'x': None, # TODO
-            'y': None # TODO
+            'x': None,
+            'y': None 
         })
     
     if write_file:
