@@ -1,5 +1,0 @@
-from methods import generate_lists
-from models.EM_ADJACENCY_MATRIX import EM_ADJACENCY_MATRIX
-
-EM_EDGE_LIST = generate_lists.generate_edge_list(EM_ADJACENCY_MATRIX)
-EM_NODE_LIST = generate_lists.generate_node_list(EM_ADJACENCY_MATRIX)

@@ -1,6 +1,7 @@
+import os
 from models import EM_ADJACENCY_MATRIX
 
-def generate_edge_list(adjacency_matrix, start_node=1):
+def generate_edge_list(adjacency_matrix, start_node=1, write_file=False):
     edge_list = []
     for i in range(len(adjacency_matrix)):
         for j in range(len(adjacency_matrix[i])):
@@ -12,9 +13,14 @@ def generate_edge_list(adjacency_matrix, start_node=1):
                     'color': 'black'
                 })
 
+    if write_file:
+        path = os.path.join(os.getcwd(), 'models', 'edge_list.py')
+        with open(path, 'w') as file:
+            file.write('edge_list = ' + str(edge_list))
+
     return edge_list
 
-def generate_node_list(adjacency_matrix, start_node=1):
+def generate_node_list(adjacency_matrix, start_node=1, write_file=False):
     node_list = []
     for i in range(len(adjacency_matrix)):
         node_list.append({
@@ -22,5 +28,10 @@ def generate_node_list(adjacency_matrix, start_node=1):
             'x': None, # TODO
             'y': None # TODO
         })
+    
+    if write_file:
+        path = os.path.join(os.getcwd(), 'models', 'node_list.py')
+        with open(path, 'w') as file:
+            file.write('node_list = ' + str(node_list))
 
     return node_list
