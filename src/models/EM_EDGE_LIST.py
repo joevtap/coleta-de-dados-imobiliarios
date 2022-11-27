@@ -1,4 +1,6 @@
-EM_EDGE_LIST = [
+import pandas as pd
+
+_EM_EDGE_LIST = [
     {
         'node_1': 1,
         'node_2': 2,
@@ -1632,3 +1634,5 @@ EM_EDGE_LIST = [
         'color': 'black',
     },
 ]
+
+EM_EDGE_LIST = pd.DataFrame.from_dict(_EM_EDGE_LIST)
