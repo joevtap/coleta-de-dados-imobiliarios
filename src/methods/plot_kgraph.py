@@ -9,7 +9,7 @@ def plot_kgraph(kgraph, graph):
     plt.figure(figsize=(16, 9))
     pos_random = random_layout(kgraph)
     draw_networkx_nodes(kgraph, node_positions,
-                        node_size=20, node_color="red")
+                        node_size=20, node_color="black")
     draw_networkx_edges(
         kgraph, node_positions, alpha=0.1)
     plt.axis('off')

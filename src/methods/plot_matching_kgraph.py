@@ -12,6 +12,6 @@ def plot_matching_kgraph(matching_kgraph, kgraph, graph):
 
     kgraph_min_edges = Graph(matching_kgraph)
     draw(kgraph_min_edges, pos=node_positions,
-         node_size=20, edge_color='blue', node_color='red')
+         node_size=20, edge_color='red', node_color='black')
 
     plt.savefig('min_matching_kgraph.png')

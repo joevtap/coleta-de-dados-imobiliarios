@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from networkx import draw
+from networkx import draw, draw_networkx_edge_labels
 
 
 def plot_em_graph(graph):
@@ -16,5 +16,8 @@ def plot_em_graph(graph):
 
     draw(graph, pos=node_positions, width=weights, edge_color='black',
          node_size=50, node_color='black')
+
+    draw_networkx_edge_labels(graph, pos=node_positions, font_size=12,
+                              edge_labels={(u, v): d['weight'] for u, v, d in graph.edges(data=True)})
 
     plt.savefig('graph.png')
