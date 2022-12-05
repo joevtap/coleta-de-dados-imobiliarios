@@ -26,6 +26,13 @@ class ChinesePostmanProblem(Graph):
         self._min_matching_edges = None
         self._augmented_graph = None
         self._eulerian_tour = None
+        self._odd_degree_nodes = None
+
+    def get_eulerian_tour(self):
+        return self._eulerian_tour
+
+    def get_odd_degree_nodes(self):
+        return self._odd_degree_nodes
 
     def get_graph(self):
         self._graph = nx.Graph()
@@ -43,9 +50,9 @@ class ChinesePostmanProblem(Graph):
         if not self._graph:
             self.get_graph()
 
-        odd_degree_nodes = get_odd_degree_nodes(graph=self._graph)
+        self._odd_degree_nodes = get_odd_degree_nodes(graph=self._graph)
         odd_degree_pairs = combine_odd_degree_node_pairs(
-            odd_degree_nodes=odd_degree_nodes)
+            odd_degree_nodes=self._odd_degree_nodes)
         costs = find_shortest_path_between_node_pairs(
             graph=self._graph, odd_degree_pairs=odd_degree_pairs)
         self._kgraph = get_kgraph_from_combined_pairs(pair_weights=costs)
@@ -55,6 +62,9 @@ class ChinesePostmanProblem(Graph):
 
         self._eulerian_tour = compute_eulerian_tour(
             self._augmented_graph, self._graph)
+
+        for i, edge in enumerate(self._eulerian_tour[0:50]):
+            print(f'{i} | {edge[0]} -({edge[2]["weight"]})-> {edge[1]}')
 
     def plot(self):
         if not self._graph:

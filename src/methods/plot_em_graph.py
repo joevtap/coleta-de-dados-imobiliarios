@@ -20,4 +20,5 @@ def plot_em_graph(graph):
     draw_networkx_edge_labels(graph, pos=node_positions, font_size=12,
                               edge_labels={(u, v): d['weight'] for u, v, d in graph.edges(data=True)})
 
-    plt.savefig('graph.png')
+    plt.savefig('graph.png', dpi=300)
+    plt.clf()

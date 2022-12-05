@@ -13,4 +13,5 @@ def plot_kgraph(kgraph, graph):
     draw_networkx_edges(
         kgraph, node_positions, alpha=0.1)
     plt.axis('off')
-    plt.savefig('kgraph.png')
+    plt.savefig('kgraph.png', dpi=300)
+    plt.clf()
