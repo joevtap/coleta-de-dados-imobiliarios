@@ -1,4 +1,5 @@
 from .EM_ADJACENCY_MATRIX import EM_ADJACENCY_MATRIX
 from .EM_EDGE_LIST import EM_EDGE_LIST
 from .EM_NODE_LIST import EM_NODE_LIST
+from .EM_TWO_INSPECTORS import INSPECTOR_1_EDGES, INSPECTOR_1_NODES, INSPECTOR_2_EDGES, INSPECTOR_2_NODES
 from .nodes_coordinates import coordinates, size

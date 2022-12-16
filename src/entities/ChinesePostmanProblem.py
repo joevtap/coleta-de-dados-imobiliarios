@@ -82,5 +82,5 @@ class ChinesePostmanProblem(Graph):
     def solve(self):
         self.get_graph()
         self.compute()
-        # show_stats(self._eulerian_tour, self._graph)
+        show_stats(self._eulerian_tour, self._graph)
         self.plot()

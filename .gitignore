@@ -6,3 +6,4 @@ src/fig/*
 *.jpg
 *.gif
 *.jpeg
+.ipynb_checkpoints
