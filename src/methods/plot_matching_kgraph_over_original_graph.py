@@ -3,6 +3,13 @@ from networkx import draw, Graph, draw_networkx_edge_labels, draw_networkx_label
 
 
 def plot_matching_kgraph_over_original_graph(matching_kgraph, graph):
+    """
+    It takes a graph and a matching on that graph, and plots the matching on top of
+    the graph
+    
+    :param matching_kgraph: the matching k-graph
+    :param graph: the original graph
+    """
     node_positions = {node[0]: (node[1]['x'], -node[1]['y'])
                       for node in graph.nodes(data=True)}
 

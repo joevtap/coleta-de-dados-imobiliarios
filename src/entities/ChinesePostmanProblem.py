@@ -19,9 +19,19 @@ from methods.plot_matching_kgraph import plot_matching_kgraph
 from methods.plot_matching_kgraph_over_original_graph import \
     plot_matching_kgraph_over_original_graph
 
+# > The class takes in a graph, finds the odd degree nodes, finds the shortest
+# path between the odd degree nodes, finds the minimum weight matching between the
+# odd degree nodes, augments the original graph with the minimum weight matching,
+# and then finds the eulerian tour of the augmented graph
 
 class ChinesePostmanProblem(Graph):
     def __init__(self, edges, nodes):
+        """
+        A constructor for the class. It initializes the class.
+        
+        :param edges: a list of tuples, where each tuple is an edge in the graph
+        :param nodes: a list of nodes in the graph
+        """
         super().__init__(edges, nodes)
         self._kgraph = None
         self._min_matching_edges = None
@@ -30,12 +40,24 @@ class ChinesePostmanProblem(Graph):
         self._odd_degree_nodes = None
 
     def get_eulerian_tour(self):
+        """
+        It returns the eulerian tour of the graph.
+        :return: The eulerian tour of the graph.
+        """
         return self._eulerian_tour
 
     def get_odd_degree_nodes(self):
+        """
+        It returns the odd degree nodes.
+        :return: The odd degree nodes.
+        """
         return self._odd_degree_nodes
 
     def get_graph(self):
+        """
+        The function takes the nodes and edges dataframes and creates a graph object
+        :return: A graph object
+        """
         self._graph = nx.Graph()
 
         for i, elrow in self._edges.iterrows():
@@ -48,6 +70,16 @@ class ChinesePostmanProblem(Graph):
         return self._graph
 
     def compute(self, save=True):
+        """
+        We first find the odd degree nodes, then we combine them into pairs, then we
+        find the shortest path between each pair, then we create a complete graph
+        from the pairs, then we find the minimum weight matching, then we augment the
+        original graph with the minimum weight matching, then we compute the eulerian
+        tour
+        
+        :param save: If True, the solution will be saved to a file called stats.txt
+        in the current working directory, defaults to True (optional)
+        """
         if not self._graph:
             self.get_graph()
 
@@ -75,6 +107,10 @@ class ChinesePostmanProblem(Graph):
                         f'{i} | {edge[0]} -({edge[2]["weight"]})-> {edge[1]}\n')
 
     def plot(self):
+        """
+        > The function `plot()` plots the original graph, the k-graph, the minimum
+        matching edges, and the minimum matching edges over the original graph
+        """
         if not self._graph:
             self.get_graph()
         plot_em_graph(graph=self._graph)
@@ -88,13 +124,28 @@ class ChinesePostmanProblem(Graph):
             self._min_matching_edges, self._graph)
 
     def solve(self, save=True):
+        """
+        > The function `solve` computes the solution of the problem, saves it, shows
+        some statistics and plots the results
+        
+        :param save: if True, the results will be saved in a file, defaults to True
+        (optional)
+        """
         self.get_graph()
         self.compute(save)
         self.show_stats()
         self.plot()
 
     def show_stats(self):
+        """
+        It takes a graph and an eulerian tour of that graph and prints out the number
+        of edges in the graph, the number of edges in the tour, and the number of
+        edges that are in the graph but not in the tour
+        """
         show_stats(self._eulerian_tour, self._graph)
 
     def save(self):
+        """
+        It saves the eulerian tour and the graph to a file.
+        """
         save_stats(self._eulerian_tour, self._graph)

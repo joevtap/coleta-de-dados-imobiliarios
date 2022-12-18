@@ -3,6 +3,12 @@ from networkx import draw, draw_networkx_edge_labels
 
 
 def plot_em_graph(graph):
+    """
+    It takes a graph, finds the maximum weight of all edges, then plots the graph
+    with the width of each edge proportional to its weight
+    
+    :param graph: the graph to be plotted
+    """
     node_positions = {node[0]: (node[1]['x'], -node[1]['y'])
                       for node in graph.nodes(data=True)}
 

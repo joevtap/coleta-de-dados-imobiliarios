@@ -8,8 +8,21 @@ import imageio
 from entities.Graph import Graph
 
 
+# It takes the eulerian tour and the nodes and creates a graph with the eulerian
+# tour as edges and the nodes as nodes
 class CPPSolution(Graph):
     def __init__(self, nodes, eulerian_tour, **kwargs):
+        """
+        The function takes in a list of nodes, an eulerian tour, and a list of odd
+        degree nodes. It then creates a list of edges from the eulerian tour, and
+        passes that list of edges, along with the list of nodes, to the parent
+        class. It then sets the node positions to None, and sets the eulerian tour
+        and odd degree nodes to the values passed in
+        
+        :param nodes: a list of nodes
+        :param eulerian_tour: a list of nodes that form an eulerian tour of the
+        graph
+        """
         self._edges = self.get_cpp_edge_list(eulerian_tour)
         super().__init__(self._edges, nodes)
         self._node_positions = None
@@ -17,6 +30,14 @@ class CPPSolution(Graph):
         self._odd_degree_nodes = kwargs.get('odd_degree_nodes', None)
 
     def get_cpp_edge_list(self, eulerian_tour):
+        """
+        It takes the eulerian tour and returns a list of edges with the number of
+        times each edge was visited and the sequence of the visits
+        
+        :param eulerian_tour: a list of tuples, where each tuple is an edge in the
+        graph
+        :return: A list of edges in the graph.
+        """
         cpp_edgelist = {}
 
         for i, e in enumerate(eulerian_tour):
@@ -34,6 +55,9 @@ class CPPSolution(Graph):
         return list(cpp_edgelist.values())
 
     def get_graph(self):
+        """
+        It takes the nodes and edges dataframes and creates a networkx graph object.
+        """
         self._graph = nx.Graph(self._edges)
 
         for i, nlrow in self._nodes.iterrows():
@@ -44,11 +68,19 @@ class CPPSolution(Graph):
                                 for node in self._graph.nodes(data=True)}
 
     def compute(self):
+        """
+        It does nothing.
+        """
         if not self._graph:
             self.get_graph()
         pass
 
     def plot(self):
+        """
+        It plots the graph with the edges colored according to the number of times
+        they were visited, and then it plots the graph with the edges colored
+        according to the sequence of the Eulerian path
+        """
         if not self._graph:
             self.get_graph()
 
@@ -82,6 +114,10 @@ class CPPSolution(Graph):
         plt.clf()
 
     def anim(self):
+        """
+        It takes a graph, and for each edge in the graph, it draws the graph with
+        the edges that have been walked so far, and then saves the image
+        """
         if not self._graph:
             self.get_graph()
 

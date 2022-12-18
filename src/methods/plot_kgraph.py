@@ -3,6 +3,13 @@ from networkx import draw_networkx_nodes, draw_networkx_edges, random_layout
 
 
 def plot_kgraph(kgraph, graph):
+    """
+    It takes a graph and a k-nearest-neighbor graph and plots the k-nearest-neighbor
+    graph with the node positions of the original graph
+    
+    :param kgraph: the graph we're going to plot
+    :param graph: the graph to be plotted
+    """
     node_positions = {node[0]: (node[1]['x'], -node[1]['y'])
                       for node in graph.nodes(data=True)}
 

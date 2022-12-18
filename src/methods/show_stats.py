@@ -4,6 +4,12 @@ import os
 
 
 def show_stats(tour, graph):
+    """
+    It takes a tour and a graph, and prints out some stats about the tour
+    
+    :param tour: the list of edges that make up the tour
+    :param graph: the graph object
+    """
     total_weight = sum(
         [edge[2]['weight'] for edge in tour])
     total_weight_original_trail = sum(
@@ -41,6 +47,14 @@ def show_stats(tour, graph):
 
 
 def save_stats(tour, graph):
+    """
+    It takes a tour and a graph, and then calculates the total weight of the tour,
+    the total weight of the original trail map, the total weight of the tour
+    retracing edges, and the percent of mileage retraced
+    
+    :param tour: the tour that you want to save stats for
+    :param graph: the graph object
+    """
     total_weight = sum(
         [edge[2]['weight'] for edge in tour])
     total_weight_original_trail = sum(

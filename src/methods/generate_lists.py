@@ -3,6 +3,16 @@ from models import EM_ADJACENCY_MATRIX, nodes_coordinates
 
 
 def generate_edge_list(adjacency_matrix, start_node=1, write_file=False):
+    """
+    It takes an adjacency matrix and returns a list of edges
+    
+    :param adjacency_matrix: The adjacency matrix of the graph
+    :param start_node: The node number of the first node in the graph, defaults to 1
+    (optional)
+    :param write_file: If True, the generated edge list and node list will be
+    written to a file, defaults to False (optional)
+    :return: A list of dictionaries.
+    """
     edge_list = []
     for i in range(len(adjacency_matrix)):
         for j in range(len(adjacency_matrix[i])):

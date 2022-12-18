@@ -2,6 +2,15 @@ from networkx import eulerian_circuit, shortest_path
 
 
 def compute_eulerian_tour(graph, graph_original):
+    """
+    It takes the naive tour and augments it with the shortest path between the
+    vertices in the naive tour
+    
+    :param graph: the graph that we're finding the eulerian tour of
+    :param graph_original: the original graph
+    :return: A list of tuples. Each tuple contains the start node, end node, and the
+    edge attributes of the edge.
+    """
     naive_tour = list(eulerian_circuit(graph, source=50))
     tour = []
 

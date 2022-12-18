@@ -3,6 +3,15 @@ from networkx import draw, Graph
 
 
 def plot_matching_kgraph(matching_kgraph, kgraph, graph):
+    """
+    It takes a matching graph and a graph and plots the matching graph on top of the
+    original graph
+    
+    :param matching_kgraph: the minimum weight matching of the k-nearest neighbor
+    graph
+    :param kgraph: the k-nearest neighbor graph
+    :param graph: the graph we're trying to find a minimum weight matching for
+    """
     node_positions = {node[0]: (node[1]['x'], -node[1]['y'])
                       for node in graph.nodes(data=True)}
 
