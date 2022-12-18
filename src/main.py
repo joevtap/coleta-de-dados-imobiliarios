@@ -16,6 +16,7 @@ def main():
         nodes=nodes, eulerian_tour=em_cpp_problem.get_eulerian_tour(), odd_degree_nodes=em_cpp_problem.get_odd_degree_nodes())
 
     em_cpp_problem.plot()
+    em_cpp_solution.plot()
     em_cpp_problem.save()
     # em_cpp_solution.anim()
 
