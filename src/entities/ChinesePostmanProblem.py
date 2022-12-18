@@ -1,5 +1,6 @@
 import networkx as nx
 import pandas as pd
+import os
 
 from entities.Graph import Graph
 from methods.combine_odd_degree_node_pairs import combine_odd_degree_node_pairs
@@ -11,7 +12,7 @@ from methods.get_odd_degree_nodes import get_odd_degree_nodes
 from methods.min_weight_matching import min_weight_matching
 from methods.augment_original_graph import augment_original_graph
 from methods.compute_eulerian_tour import compute_eulerian_tour
-from methods.show_stats import show_stats
+from methods.show_stats import show_stats, save_stats
 from methods.plot_em_graph import plot_em_graph
 from methods.plot_kgraph import plot_kgraph
 from methods.plot_matching_kgraph import plot_matching_kgraph
@@ -46,7 +47,7 @@ class ChinesePostmanProblem(Graph):
 
         return self._graph
 
-    def compute(self):
+    def compute(self, save=True):
         if not self._graph:
             self.get_graph()
 
@@ -65,6 +66,13 @@ class ChinesePostmanProblem(Graph):
 
         for i, edge in enumerate(self._eulerian_tour[0:50]):
             print(f'{i} | {edge[0]} -({edge[2]["weight"]})-> {edge[1]}')
+        if save:
+            with open(os.path.join(os.getcwd(), 'stats.txt'), 'w') as f:
+                f.write(
+                    f'Solution for graph with {len(self._graph.nodes)} nodes and {len(self._graph.edges)} edges: \n\n')
+                for i, edge in enumerate(self._eulerian_tour[0:-1]):
+                    f.write(
+                        f'{i} | {edge[0]} -({edge[2]["weight"]})-> {edge[1]}\n')
 
     def plot(self):
         if not self._graph:
@@ -79,8 +87,14 @@ class ChinesePostmanProblem(Graph):
         plot_matching_kgraph_over_original_graph(
             self._min_matching_edges, self._graph)
 
-    def solve(self):
+    def solve(self, save=True):
         self.get_graph()
-        self.compute()
-        show_stats(self._eulerian_tour, self._graph)
+        self.compute(save)
+        self.show_stats()
         self.plot()
+
+    def show_stats(self):
+        show_stats(self._eulerian_tour, self._graph)
+
+    def save(self):
+        save_stats(self._eulerian_tour, self._graph)

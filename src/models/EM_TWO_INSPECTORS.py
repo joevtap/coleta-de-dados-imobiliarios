@@ -286,11 +286,11 @@ INSPECTOR_2_EDGES = [
     {"node_1": 69, "node_2": 70, "weight": 11, "color": "black"},
     {"node_1": 70, "node_2": 58, "weight": 5, "color": "black"},
     {"node_1": 70, "node_2": 69, "weight": 11, "color": "black"},
-    {"node_1": 45, "node_2": 46, "weight": 0},
-    {"node_1": 46, "node_2": 47, "weight": 0},
-    {"node_1": 47, "node_2": 48, "weight": 0},
-    {"node_1": 48, "node_2": 49, "weight": 0},
-    {"node_1": 49, "node_2": 50, "weight": 0},
+    {"node_1": 45, "node_2": 46, "weight": 0, "color": "black"},
+    {"node_1": 46, "node_2": 47, "weight": 0, "color": "black"},
+    {"node_1": 47, "node_2": 48, "weight": 0, "color": "black"},
+    {"node_1": 48, "node_2": 49, "weight": 0, "color": "black"},
+    {"node_1": 49, "node_2": 50, "weight": 0, "color": "black"},
 ]
 
 INSPECTOR_1_NODES = [
