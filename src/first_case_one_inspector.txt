@@ -159,6 +159,7 @@ Solution for graph with 80 nodes and 136 edges:
 156 | 9 -(1)-> 24
 157 | 24 -(4)-> 25
 158 | 25 -(6)-> 38
+159 | 38 -(2)-> 50
 
 
 Total edge cost of circuit: 1167.00
