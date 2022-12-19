@@ -24,11 +24,12 @@ from methods.plot_matching_kgraph_over_original_graph import \
 # odd degree nodes, augments the original graph with the minimum weight matching,
 # and then finds the eulerian tour of the augmented graph
 
+
 class ChinesePostmanProblem(Graph):
     def __init__(self, edges, nodes):
         """
         A constructor for the class. It initializes the class.
-        
+
         :param edges: a list of tuples, where each tuple is an edge in the graph
         :param nodes: a list of nodes in the graph
         """
@@ -76,7 +77,7 @@ class ChinesePostmanProblem(Graph):
         from the pairs, then we find the minimum weight matching, then we augment the
         original graph with the minimum weight matching, then we compute the eulerian
         tour
-        
+
         :param save: If True, the solution will be saved to a file called stats.txt
         in the current working directory, defaults to True (optional)
         """
@@ -102,7 +103,7 @@ class ChinesePostmanProblem(Graph):
             with open(os.path.join(os.getcwd(), 'stats.txt'), 'w') as f:
                 f.write(
                     f'Solution for graph with {len(self._graph.nodes)} nodes and {len(self._graph.edges)} edges: \n\n')
-                for i, edge in enumerate(self._eulerian_tour[0:-1]):
+                for i, edge in enumerate(self._eulerian_tour):
                     f.write(
                         f'{i} | {edge[0]} -({edge[2]["weight"]})-> {edge[1]}\n')
 
@@ -127,7 +128,7 @@ class ChinesePostmanProblem(Graph):
         """
         > The function `solve` computes the solution of the problem, saves it, shows
         some statistics and plots the results
-        
+
         :param save: if True, the results will be saved in a file, defaults to True
         (optional)
         """
