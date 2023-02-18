@@ -7,3 +7,5 @@ src/fig/*
 *.gif
 *.jpeg
 .ipynb_checkpoints
+.sonar/
+.scannerwork/
